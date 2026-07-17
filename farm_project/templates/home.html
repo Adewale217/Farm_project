@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="min-h-screen flex flex-col items-center justify-center p-6 text-center">
+    
+    <h1 class="text-6xl font-light text-green-900 mb-6 tracking-tight">
+        Welcome to Jordar Foods Limited
+    </h1>
+
+    <p class="text-xl text-green-700 mb-12 max-w-lg leading-relaxed">
+        Fresh, organic produce delivered to your doorstep. Simple, seasonal, and sustainable.
+    </p>
+
+    <a href="{% url 'product_list' %}" class="px-8 py-3 bg-green-700 text-white font-medium rounded-full hover:bg-green-800 transition-all shadow-md">
+        View Products
+    </a> 
+
+    <div class="mt-16 w-full max-w-4xl">
+        <img src="{% static 'images/home_banner.jpg' %}" 
+             alt="Jorda Farm Banner" 
+             class="w-full h-95 rounded-3xl shadow-2xl object-cover border-4 border-green-50">
+    </div>
+</div>
+<br>
+
+<h1 class="text-6xl font-light text-green-900 mb-6 tracking-tight text-center">
+    WHY Choose Jordar
+</h1>
+<section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center">
+        <div>
+            <h3 class="text-xl font-semibold text-green-900 mb-2">Farm Fresh</h3>
+            <p class="text-gray-600">Harvested at the peak of ripeness and delivered within 24 hours.</p>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold text-green-900 mb-2">Sustainable</h3>
+            <p class="text-gray-600">Grown using eco-friendly practices that protect our soil and planet.</p>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold text-green-900 mb-2">Transparent</h3>
+            <p class="text-gray-600">Know exactly where your food comes from and how it was grown.</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl font-light text-center text-green-900 mb-16">Our Services</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {% for title, desc in services %}
+            <div class="p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition">
+                <h3 class="text-lg font-semibold text-green-900 mb-3">{{ title }}</h3>
+                <p class="text-gray-600 text-sm">{{ desc }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-light text-green-900 mb-16">How It Works</h2>
+        <div class="grid md:grid-cols-4 gap-8 relative">
+            {% for step in steps %}
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-green-100 text-green-800 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6">
+                    {{ forloop.counter }}
+                </div>
+                <h3 class="font-semibold text-green-900">{{ step }}</h3>
+            </div>
+            {% endfor %}
+            <div class="hidden md:block absolute top-8 left-20 right-20 border-t-2 border-green-100 z-0"></div>
+        </div>
+    </div>
+</section>
+{% endblock %}
